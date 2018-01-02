@@ -4,27 +4,27 @@
         "lng": 150.600,
         "info" : "Mitte",
         "status" : "N",
-        "id": 1234
+        "number": 1234
     },
      {
         "lat": -33.300,
         "lng": 150.600,
         "info" : "Oben",
         "status" : "F",
-        "id": 1235   
+        "number": 1235   
     },
     {
         "lat": -35.300,
         "lng": 150.600,
         "info" : "Unten",
         "status" : "N",
-        "id": 1236  
+        "number": 1236  
     },
     {
         "lat": -35.300,
         "lng": 150.200,
         "info" : "Links",
         "status" : "F",
-        "id": 1237  
+        "number": 1237  
     }
 ]

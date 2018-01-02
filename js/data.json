@@ -1,24 +1,24 @@
 [
     {
-        "coords" : {lat: -34.300, lng: 150.600},
+        "coords" : JSON.stringify({lat: -34.300, lng: 150.600}),
         "info" : "Mitte",
         "status" : "N",
         "id": 1234
     },
      {
-        "coords" : {lat: -33.300, lng: 150.600},
+        "coords" : JSON.stringify({lat: -33.300, lng: 150.600}),
         "info" : "Oben",
         "status" : "F",
         "id": 1235   
     },
     {
-        "coords" : {lat: -35.300, lng: 150.600},
+        "coords" : JSON.stringify({lat: -35.300, lng: 150.600}),
         "info" : "Unten",
         "status" : "N",
         "id": 1236  
     },
     {
-        "coords" : {lat: -35.300, lng: 150.200},
+        "coords" : JSON.stringify({lat: -35.300, lng: 150.200}),
         "info" : "Links",
         "status" : "F",
         "id": 1237  

@@ -8,40 +8,33 @@ function initMap() {
             //Die Karte//
             var map = new google.maps.Map(document.getElementById('map'),options);
             
-            //Die Daten//
-            var ausflügeNormal = [
-                [{lat: -34.300, lng: 150.600},"Mitte","N",1234],
-                [{lat: -33.300, lng: 150.600},"Oben","F",1235],
-                [{lat: -35.300, lng: 150.600},"Unten","N",1236],
-                [{lat: -35.300, lng: 150.200},"Neuer","F",1237]
-            ];  
-              
-            for (var i = 0;i < ausflügeNormal.length; i++){
-                var props = ausflügeNormal[i];
+            //Die Daten// 
+            var props;
+            for (var objekte in ourData){
+                props = ourData[objekte];
+                console.log(props);
                 ausflugMarker(props);
             };
-            
-            
             // Arbeitsfunktionen
-            function ausflugMarker(props){
+            function ausflugMarker(props){ 
                     var marker = new google.maps.Marker({
-                        name:"ausflug"+props[3],
-                        position:props[0],
+                        name:"ausflug"+props.number,
+                        position: new google.maps.LatLng(props.lat,props.lng),
                         map:map,
                         icon:"",
                     });
-                    console.log(marker);
                     var infoFenster = new google.maps.InfoWindow({
-                        content:'<div class="pop"><p>'+props[1]+'</p></div>'
+                        content:'<div class="pop"><p>'+props.info+'</p></div>'
                     }); 
                     
                     marker.addListener('click',function(){
                         infoFenster.open(map,marker);
                     })
                     
-                    if(props[2] === "F"){
+                    if(props.status === "F"){
                         marker.icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
                     }
+                    console.log(marker)
                 };
 }
             

@@ -11,11 +11,12 @@
         <link type="text/css" rel="stylesheet" href="css/style.css">
     <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <!-------Jquery ------->
+    <!-------Scripte ------->
         <script src="https://code.jquery.com/jquery-3.2.1.js"> </script>
         <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/json.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
 	</head>
-	
 	<body>
         <div class="wraper">
             <div class="menu">
@@ -27,71 +28,8 @@
             <div id="map">
                 
             </div>
-        </div> 
-<!--------------GoogleMaps API----------------------->
-        <script>
-          function initMap() {
-            //Optionen zur Anzeige der Karte//
-            var options = {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 8 
-            }
-            //Die Karte//
-            var map = new google.maps.Map(document.getElementById('map'),options);
-            
-            //Die Marker//
-            var ausflügeNormal = [
-                [{lat: -34.300, lng: 150.600},"Mitte","N"],
-                [{lat: -33.300, lng: 150.600},"Oben","F"],
-                [{lat: -35.300, lng: 150.600},"Unten","N"]
-            ];  
-              
-            for (var i = 0;i < ausflügeNormal.length; i++){
-                var props = ausflügeNormal[i];
-                console.log(props[0]);
-                
-                if(props[2] == "F"){
-                    ausflugNormal(props);
-                }else{
-                    ausflugFeatured(props);
-                };
-            };
-            
-            
-            // Arbeitsfunktionen
-                function ausflugFeatured(props){
-                    var marker = new google.maps.Marker({
-                        name:"ausflugF"+i,
-                        position:props[0],
-                        map:map,
-                        icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-                    });
-                
-                    var infoFenster = new google.maps.InfoWindow({
-                        content:'<div class="pop"><p>'+props[1]+'</p></div>'
-                    }); 
-                    
-                    marker.addListener('click',function(){
-                        infoFenster.open(map,marker);
-                    })
-                };
-                function ausflugNormal(porps){
-                    var marker = new google.maps.Marker({
-                        name:"ausflugN"+i,
-                        position:props[0],
-                        map:map,
-                    });
-                
-                    var infoFenster = new google.maps.InfoWindow({
-                        content:'<div class="pop"><p>'+props[1]+'</p></div>'
-                    });
-                }
-            }
-            
-
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-x9LZMjJXhMNApv-jWeBJYTFCE2xy9f8&callback=initMap"
-    async defer></script>
+        </div>    
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-x9LZMjJXhMNApv-jWeBJYTFCE2xy9f8&callback=initMap" async defer></script>
 <!--------------------------------------------------->
 	</body>
 </html>

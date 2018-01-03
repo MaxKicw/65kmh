@@ -1,30 +1,30 @@
 [
-    {
+    {"1234":{
         "lat": -34.300,
         "lng": 150.600,
         "info" : "Mitte",
-        "status" : "N",
-        "number": 1234
-    },
-     {
+        "status" : "N"
+    }},
+    {"1235":{
         "lat": -33.300,
         "lng": 150.600,
         "info" : "Oben",
-        "status" : "F",
-        "number": 1235   
-    },
-    {
+        "status" : "F"  
+    }},
+    {"1236":{
         "lat": -35.300,
         "lng": 150.600,
         "info" : "Unten",
-        "status" : "N",
-        "number": 1236  
-    },
-    {
+        "status" : "N"
+    }},
+    {"1237":{
         "lat": -35.300,
         "lng": 150.200,
         "info" : "Links",
-        "status" : "F",
-        "number": 1237  
-    }
+        "status" : "F" 
+    }},
 ]
+
+{"2235": {
+    
+}}

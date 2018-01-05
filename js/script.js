@@ -1,4 +1,8 @@
 var ourData;
+var karte = document.getElementsByClassName("karte");
+var markerSammlung=[];
+var infoFensterSammlung=[];
+var marker;
 function initMap() {
             //Optionen zur Anzeige der Karte//
             var options = {
@@ -23,42 +27,75 @@ function initMap() {
                 for (var objekte in ourData){
                     props = ourData[objekte];
                     console.log(props)
-                    ausflugMarker(props);
-                    renderHTML(props);
+                    renderMarker(props);
+                    renderCards(props);
                 };
                 /*  Arbeitsfunktionen mit Definition:
-                    - ausflugMarker: Setzt die Marker auf die Karte, fügt ein Click_Listener hinzu und fügt ein InfoFenster mit Inhalt ein. (Alle Daten aus dem JSON-Response)
-                    - renderHTML: Befüllt den jeweiligen Bereich mit den Karten und die Karteninhalte
+                    - renderMarker: Setzt die Marker auf die Karte, fügt ein Click_Listener hinzu und fügt ein InfoFenster mit Inhalt ein. (Alle Daten aus dem JSON-Response)
+                    - renderCards: Befüllt den jeweiligen Bereich mit den Karten und die Karteninhalte
                 */
-                function ausflugMarker(props){ 
+                function renderMarker(props){ 
                         var marker = new google.maps.Marker({
-                            name:"ausflug"+props.number,
+                            name:props.number,
                             position: new google.maps.LatLng(props.lat,props.lng),
                             map:map,
                             icon:"",
                         });
                         var infoFenster = new google.maps.InfoWindow({
-                            content:'<div class="pop"><p>'+props.info+'</p></div>'
+                            content:'<div class='+props.number+' class="pop" ><p>'+props.info+'</p></div>'
                         }); 
-
+                        
                         marker.addListener('click',function(){
+                            for(i=0;i<infoFensterSammlung.length;i++){
+                                        infoFensterSammlung[i].close();
+                                    }
                             infoFenster.open(map,marker);
-                        })
-
+                            map.setCenter(marker.getPosition());
+                        });
                         if(props.status === "F"){
                             marker.icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
                         }
+                        markerSammlung.push(marker);
+                        infoFensterSammlung.push(infoFenster);
                     };
-                function renderHTML(props){
-                    var karte = "<div class='karte'>"+props.info+"</div>";
+                function renderCards(props){
+                    var karte = "<div class='karte' id='"+props.number+"'>"+props.info+"</div>";
                     if(props.status === "F"){
                         var featured = document.getElementById("f");
                         featured.insertAdjacentHTML("beforeend",karte);
+                        var karte = document.getElementById(props.number);
+                        document.getElementById(props.number).addEventListener('click',function(){
+                            for(i=0;i<markerSammlung.length;i++){
+                                var popup = (markerSammlung[i]);
+                                if(popup.name === parseInt(karte.id)){
+                                    for(i=0;i<infoFensterSammlung.length;i++){
+                                        infoFensterSammlung[i].close();
+                                    }
+                                    google.maps.event.trigger(popup, 'click');
+                                };
+                            }
+                        });
                     }else{
                         var normal = document.getElementById("n");
                         normal.insertAdjacentHTML("beforeend", karte);
+                        var karte = document.getElementById(props.number);
+                        document.getElementById(props.number).addEventListener('click',function(){
+                            for(i=0;i<markerSammlung.length;i++){
+                                var popup = (markerSammlung[i]);
+                                if(popup.name === parseInt(karte.id)){
+                                    for(i=0;i<infoFensterSammlung.length;i++){
+                                        infoFensterSammlung[i].close();
+                                    }
+                                    google.maps.event.trigger(popup, 'click');
+                                };
+                            }
+                        });
                     };
-                };
+                };               
             };    
 };
+
+
+
+
 

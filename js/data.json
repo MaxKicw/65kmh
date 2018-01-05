@@ -2,57 +2,57 @@
     {
         "lat": 50.078218,
         "lng": 8.239761,
-        "info" : "Mitte",
-        "status" : "N",
+        "info" : "Stadtmitte",
+        "status" : "F",
         "number": 1234
     },
      {
-        "lat": 51.078218,
-        "lng": 8.239761,
-        "info" : "Oben",
+        "lat": 50.084339,
+        "lng": 8.260689,
+        "info" : "Neroberg",
         "status" : "F",
         "number": 1235   
     },
     {
-        "lat": 49.078218,
-        "lng": 8.239761,
-        "info" : "Unten",
+        "lat": 50.076077,
+        "lng": 8.227901,
+        "info" : "Plantage",
         "status" : "N",
         "number": 1236  
     },
     {
-        "lat": 50.078218,
-        "lng": 7.239761,
-        "info" : "Links",
+        "lat": 50.073874,
+        "lng": 8.252792,
+        "info" : "Hochschule RheinMain",
         "status" : "F",
         "number": 1237  
     },
     {
-        "lat": 50.078218,
-        "lng": 6.239761,
-        "info" : "Links",
+        "lat": 50.083238,
+        "lng": 8.204727,
+        "info" : "Waldpark",
         "status" : "F",
         "number": 1238  
     },
     {
         "lat": 51.078218,
         "lng": 6.239761,
-        "info" : "Links",
-        "status" : "F",
+        "info" : "Berggraben",
+        "status" : "N",
         "number": 1239  
     },
     {
-        "lat": 50.178218,
-        "lng": 6.239761,
-        "info" : "Links",
-        "status" : "F",
+        "lat": 50.082026,
+        "lng": 8.285580,
+        "info" : "Militärbasis",
+        "status" : "N",
         "number": 1240  
     },
     {
-        "lat": 50.578218,
-        "lng": 7.539761,
-        "info" : "Links",
-        "status" : "F",
+        "lat": 50.099207,
+        "lng": 8.234596,
+        "info" : "Spielplatz",
+        "status" : "N",
         "number": 1241  
     }
 ]

@@ -7,7 +7,99 @@ function initMap() {
             //Optionen zur Anzeige der Karte//
             var options = {
                 center: {lat: 50.078218, lng: 8.239761},
-                zoom: 15
+                zoom: 15,
+                styles: [
+                    {
+                        "featureType": "administrative",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "lightness": 33
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f2e5d4"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#c5dac6"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#c5c6c6"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#e4d7c6"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#fbfaf7"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#acbcc9"
+                            }
+                        ]
+                    }
+                ]
             }
             //Die Karte//
             var map = new google.maps.Map(document.getElementById('map'),options);
@@ -59,7 +151,7 @@ function initMap() {
                         infoFensterSammlung.push(infoFenster);
                     };
                 function renderCards(props){
-                    var karte = "<div class='karte' id='"+props.number+"'>"+props.info+"</div>";
+                    var karte = "<div class='karte' id="+props.number+"><img class='img' src='images/Wald.jpg'><h6>"+props.info+"</h6><p>Bewertung: *****</p><p>Kleine Beschreibung</p><div class='quick'></div></div>";
                     if(props.status === "F"){
                         var featured = document.getElementById("f");
                         featured.insertAdjacentHTML("beforeend",karte);

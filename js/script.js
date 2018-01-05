@@ -6,8 +6,8 @@ var marker;
 function initMap() {
             //Optionen zur Anzeige der Karte//
             var options = {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 8
+                center: {lat: 50.078218, lng: 8.239761},
+                zoom: 15
             }
             //Die Karte//
             var map = new google.maps.Map(document.getElementById('map'),options);

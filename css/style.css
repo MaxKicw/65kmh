@@ -20,6 +20,7 @@ body{
     top: 50vh;
     z-index: 5;
     transition: 300ms ease;
+    overflow: scroll;
 }
 .content.active{
     top: 100vh;
@@ -36,10 +37,30 @@ body{
     
 }
 .hide{
-    width: 50px;
-    height: 50px;
+    width: 10px;
+    height: 10px;
     position: fixed;
+    cursor: pointer;
     top: 50vh;
     z-index: 6;
     background-color: #aa7676;
+}
+#f,#n{
+    overflow: scroll;
+    height: 340px;
+    width: auto;
+    white-space: nowrap;
+}
+.karte{
+    position: relative;
+    height:300px;
+    width: 200px;
+    margin:20px;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #9f6c6c;
+    transition: 300ms ease;
+}
+.karte:hover{
+    transform: scale(1.04);
 }

@@ -4,55 +4,63 @@
         "lng": 8.239761,
         "info" : "Stadtmitte",
         "status" : "F",
-        "number": 1234
+        "number": 1234,
+        "distanz": 109
     },
      {
         "lat": 50.084339,
         "lng": 8.260689,
         "info" : "Neroberg",
         "status" : "F",
-        "number": 1235   
+        "number": 1235,
+        "distanz": 136
     },
     {
         "lat": 50.076077,
         "lng": 8.227901,
         "info" : "Plantage",
         "status" : "N",
-        "number": 1236  
+        "number": 1236,
+        "distanz": 123  
     },
     {
         "lat": 50.073874,
         "lng": 8.252792,
         "info" : "Hochschule RheinMain",
         "status" : "F",
-        "number": 1237  
+        "number": 1237,
+        "distanz": 135  
     },
     {
         "lat": 50.083238,
         "lng": 8.204727,
         "info" : "Waldpark",
         "status" : "F",
-        "number": 1238  
+        "number": 1238,
+        "distanz": 140  
     },
     {
         "lat": 51.078218,
         "lng": 6.239761,
         "info" : "Berggraben",
         "status" : "N",
-        "number": 1239  
+        "number": 1239,
+        "distanz": 110  
     },
     {
         "lat": 50.082026,
         "lng": 8.285580,
         "info" : "Militärbasis",
         "status" : "N",
-        "number": 1240  
+        "number": 1240,
+        "distanz": 120  
     },
     {
         "lat": 50.099207,
         "lng": 8.234596,
         "info" : "Spielplatz",
         "status" : "N",
-        "number": 1241  
+        "number": 1241,
+        "distanz": 150  
     }
 ]

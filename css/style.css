@@ -13,9 +13,51 @@ body{
     width: 100%;
     z-index: 10;
 }
+.burger{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin: 20px;
+    background-color: #955151;
+}
+.burgermenu{
+    height: 100vh;
+    position: fixed;
+    width: 200px;
+    background-color: grey;
+    z-index: 9;
+    left: -200px;
+    transition: 300ms ease;
+}
+.burgermenu.active{
+    left: 0px;
+}
+.btn{
+    z-index: 10;
+    background-color: #955151;
+    float:right;
+    margin: 20px;
+}
+.filter{
+    height: 8vh;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background-color: #9d6262;
+    transition: 300ms ease;
+}
+.filter.active{
+    height: 30vh;
+}
+#distanz{
+    position: absolute;
+    top: 40%;
+    height: 
+    left: 100px;
+}
 .content{
     height: 1000px;
-    background-color: grey;
+    background-color: #cecece;
     position: relative;
     top: 50vh;
     z-index: 5;

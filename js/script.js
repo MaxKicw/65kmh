@@ -7,12 +7,13 @@ var infoFensterSammlung=[];
 var markerSammlung = [];
 var marker;
 var map;
+var standort;
 var featured;
 var normal;
 var sliderAmount;
-geoLocation();
 /*Arbeitsfunktion mit Erklärung:
     -initMap() erstellt die Karte über die GoogleAPI und holt sie die Daten des JSON-Files
+    -geoLocation() ermittelt die Geolocation von dem Nutzer und setze den Marker auf dessen Position
     -renderMarker() setzt die Marker
     -renderCards() setzt die Karten
     -filterUtility() filter alle Karten nach Filtereinstellungen
@@ -48,19 +49,30 @@ function initMap() {
                         renderMarker(ausflugSammlung[i],markerSammlung);
                         renderCards(ausflugSammlung[i],markerSammlung);
                 };
+                geoLocation();
             };
 };
 function geoLocation(){
     function onPositionReceived(position){
-        console.log(position);
-        
+        console.log();
+        standort = new google.maps.Marker({
+            name:"HOLLa",
+            draggable: true,
+            position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+            map:map,
+            icon:"https://maps.google.com/mapfiles/kml/shapes/library_maps.png",  
+        });
+        var infoFenster = new google.maps.InfoWindow({
+                            content:"Ihr Standort"
+        });
+        calcDistance(standort,markerSammlung);
     }
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(onPositionReceived);
     }
+     
 };
 function renderMarker(props,markerSammlung){
-                        console.log("RenderMarker wird ausgeführt");
                         var marker = new google.maps.Marker({
                             name:props.number,
                             position: new google.maps.LatLng(props.lat,props.lng),
@@ -77,7 +89,6 @@ function renderMarker(props,markerSammlung){
                                         infoFensterSammlung[i].close();
                                     }
                             infoFenster.open(map,marker);
-                            map.setCenter(marker.getPosition());
                         });
                         if(props.status === "F"){
                             marker.icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
@@ -85,8 +96,6 @@ function renderMarker(props,markerSammlung){
                         infoFensterSammlung.push(infoFenster);
                     };
 function renderCards(props){
-                    console.log("RenderCards wird ausgeführt");
-                    console.log(props);
                     var karte = "<div class='karte' id="+props.number+"><img class='img' src='images/Wald.jpg'><h6>"+props.info+"</h6><p>Bewertung: *****</p><p>Kleine Beschreibung</p><div class='quick'></div></div>";
                     if(props.status === "F"){
                         featured = document.getElementById("f");
@@ -133,9 +142,12 @@ function filter(sliderAmount,allAusflugSammlung,featured,normal){
     console.log("Eingestellte max. Entfernung: "+sliderAmount);
     //Zurücksetzen der Map und Content auf 0;
     ausflugSammlung = [];
+    markerSammlung = [];
+    console.log(ausflugSammlung);
     for(i=0;i<markerSammlung.length;i++){
         markerSammlung[i].setMap(null);
     }
+    calcDistance(standort,markerSammlung);
     var featured = document.getElementById("f");
     var normal = document.getElementById("n");
     while(featured.firstChild){
@@ -172,6 +184,18 @@ function sort(sliderAmount,allAusflugSammlung){
     };
     //Sortierung
     
+};
+function calcDistance(standort,markerSammlung){
+    for(i=0;i<markerSammlung.length;i++){
+        var mPosition = markerSammlung[i].getPosition();
+        var sPosition = standort.getPosition();
+        var abstand = google.maps.geometry.spherical.computeDistanceBetween(mPosition,sPosition);
+        var abstand = Math.round(abstand);
+        console.log("Der Abstand zwischen "+markerSammlung[i].name+" und dem Standort beträgt: "+abstand);
+        markerSammlung[i].distanz = abstand;
+        ausflugSammlung[i].distanz = abstand;
+    }
+    //console.log(google.maps.geometry.spherical.computeDistanceBetween())
 };
 
 

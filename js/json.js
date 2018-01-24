@@ -1,0 +1,1 @@
+"<div class='karte' id='"+props.number+"'><i class='far fa-heart'></i><img class='img' src='"+props.pic+"'><h6>"+props.info+"</h6><i class='fas fa-star'></i><p>"+props.beschreibung+"</p></div>"

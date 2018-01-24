@@ -18,12 +18,106 @@ var sliderAmount;
     -renderCards() setzt die Karten
     -filterUtility() filter alle Karten nach Filtereinstellungen
     -filter() filtert das Array allAusflugSammlung bezüglich den Filtereinstellungen von filterUtility()
+    -sort() sortiert die Karten nach Sortiereinstellungen (WIP)
+    -calcDistance() berechnet den Abstand zwischen dem aktuellen Standort und den Markern
 */
 function initMap() {
             //Optionen zur Anzeige der Karte//
             var options = {
                 center: {lat: 50.078218, lng: 8.239761},
-                zoom: 15
+                zoom: 15,
+                styles:[
+                {
+                    "featureType": "administrative",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "lightness": 33
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#f2e5d4"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#c5dac6"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "lightness": 20
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "lightness": 20
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#c5c6c6"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#e4d7c6"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#fbfaf7"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#acbcc9"
+                        }
+                    ]
+                }
+            ]
             }
             //Die Karte//
             map = new google.maps.Map(document.getElementById('map'),options);
@@ -49,7 +143,6 @@ function initMap() {
                         renderMarker(ausflugSammlung[i],markerSammlung);
                         renderCards(ausflugSammlung[i],markerSammlung);
                 };
-                geoLocation();
             };
 };
 function geoLocation(){
@@ -60,7 +153,7 @@ function geoLocation(){
             draggable: true,
             position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
             map:map,
-            icon:"https://maps.google.com/mapfiles/kml/shapes/library_maps.png",  
+            icon:"../images/2018_01_22_marker_position.png",  
         });
         var infoFenster = new google.maps.InfoWindow({
                             content:"Ihr Standort"
@@ -77,11 +170,11 @@ function renderMarker(props,markerSammlung){
                             name:props.number,
                             position: new google.maps.LatLng(props.lat,props.lng),
                             map:map,
-                            icon:"",
+                            icon:"../images/2018_01_22_marker_normal.png",
                         });
                         markerSammlung.push(marker);
                         var infoFenster = new google.maps.InfoWindow({
-                            content:'<div class='+props.number+' class="pop" ><p>'+props.info+'</p></div>'
+                            content:'<div class='+props.number+' class="pop" ><a>'+props.info+'</a></div>'
                         }); 
                         
                         marker.addListener('click',function(){
@@ -91,12 +184,12 @@ function renderMarker(props,markerSammlung){
                             infoFenster.open(map,marker);
                         });
                         if(props.status === "F"){
-                            marker.icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+                            marker.icon = '../images/2018_01_22_marker_featured.png'
                         }
                         infoFensterSammlung.push(infoFenster);
                     };
 function renderCards(props){
-                    var karte = "<div class='karte' id="+props.number+"><img class='img' src='images/Wald.jpg'><h6>"+props.info+"</h6><p>Bewertung: *****</p><p>Kleine Beschreibung</p><div class='quick'></div></div>";
+                    var karte = "<div class='karte' id='"+props.number+"'><i class='far fa-heart'></i><img class='img' src='./images/wald.jpg'><h6>"+props.info+"</h6><i class='fas fa-star'></i><p>"+props.beschreibung+"</p></div>";
                     if(props.status === "F"){
                         featured = document.getElementById("f");
                         featured.insertAdjacentHTML("beforeend",karte);
@@ -187,11 +280,13 @@ function sort(sliderAmount,allAusflugSammlung){
 };
 function calcDistance(standort,markerSammlung){
     for(i=0;i<markerSammlung.length;i++){
+        //Extrahiert die Positionsdaten den Markern und des Standorts
         var mPosition = markerSammlung[i].getPosition();
         var sPosition = standort.getPosition();
         var abstand = google.maps.geometry.spherical.computeDistanceBetween(mPosition,sPosition);
         var abstand = Math.round(abstand);
         console.log("Der Abstand zwischen "+markerSammlung[i].name+" und dem Standort beträgt: "+abstand);
+        //Updatet die Distanzen der Markerobjekte und der Cards
         markerSammlung[i].distanz = abstand;
         ausflugSammlung[i].distanz = abstand;
     }

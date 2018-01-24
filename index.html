@@ -6,7 +6,7 @@
     <!-----Charset--------->
         <meta charset="utf-8">
     <!-----MediaQuery------>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!------ CSS ---------->
         <link type="text/css" rel="stylesheet" href="css/style.css">
     <!-- Bootstrap CSS -->
@@ -16,31 +16,62 @@
 
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
+    <!-----FontAwesome----->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
+    <!----Webfont---------->
+        <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans" rel="stylesheet">
 	</head>
 	<body>
-        <div class="wraper">
-            <div class="burgermenu"></div>
+        <div class="wraper"> 
+            <div class="burgermenu">
+                <a href="/index.html">Startseite</a>
+                <a href="/profil.html">Mein Profil</a>
+                <a href="/fav.html">Favouriten</a>
+                <a href="/login.html">Login/Logout</a>
+                <a href="/insta.html">Instagram</a>
+            </div>
             <div class="filter">
                 <input id="distanz" name="distanz" type="range" min="100" max="10000" step="1" onchange="filterUtility(this.value)">
             </div>
             <div class="menu">
-                <div class="burger"></div>
-                <div class="btn"></div>
+                <div class="burger">
+                    <i class="fas fa-bars bar"></i>
+                    <i class="fas fa-times cross"></i>
+                </div>
+                <div class="btn">
+                    <i class="fas fa-filter"></i>
+                </div>
+                <p class="branding">65kmh</p> 
+            </div>
+            <div class="search">
+                <i class="fas fa-sun sun"></i>
+                <input type="text" name="search" placeholder="Search.." class="searchbar">
+                <i class="fas fa-location-arrow arrow" onclick="geoLocation();"></i>
+                <i class="fas fa-arrow-down"></i>
             </div>
             <div class="content">
+                <div class="gesponsort">
+                    <p>Gesponsert</p>
+                </div>
                 <div id="f">
                     
+                </div>
+                <div class="weitere">
+                    <p>weitere Ausflüge</p>
                 </div>
                 <div id="n">
                     
                 </div>
-                <div class="hide"></div>
-                
+                <div class="more">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
             </div>
             <div id="map">
-                
+
             </div>
-        </div>    
+            <div class="footer"></div>
+        </div>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-x9LZMjJXhMNApv-jWeBJYTFCE2xy9f8&callback=initMap" async defer></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA-x9LZMjJXhMNApv-jWeBJYTFCE2xy9f8&libraries=geometry"></script>
 

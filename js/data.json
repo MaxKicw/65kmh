@@ -4,7 +4,7 @@
         "lng": 8.192368,
         "info" : "Superfly",
         "pic": "/images/superfly.jpg",
-        "beschreibung": "Rumspringen und austoben. Auf dem Tranpolin...",
+        "beschreibung": "Rumspringen und <br>austoben. Auf dem Tram...",
         "status" : "F",
         "number": 1234,
         "distanz": 109
@@ -14,7 +14,7 @@
         "lng": 8.260689,
         "info" : "Nerobergbahn",
         "pic": "/images/nero.jpg",
-        "beschreibung": "Mit der Nerobergbahn den Berg...",
+        "beschreibung": "Mit der Nerobergbahn den<br> Berg...",
         "status" : "F",
         "number": 1235,
         "distanz": 136

@@ -1,7 +1,7 @@
 [
     {
-        "lat": 50.102854,
-        "lng": 8.192368,
+        "lat": 50.076077,
+        "lng": 8.227901,
         "info" : "Superfly",
         "pic": "/images/superfly.jpg",
         "beschreibung": "Rumspringen und <br>austoben. Auf dem Tram...",
@@ -20,9 +20,9 @@
         "distanz": 136
     },
     {
-        "lat": 50.076077,
-        "lng": 8.227901,
-        "info" : "Plantage",
+        "lat": 50.102854,
+        "lng": 8.192368,
+        "info" : "Fasanerie",
         "status" : "N",
         "number": 1236,
         "distanz": 123  

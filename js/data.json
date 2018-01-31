@@ -1,8 +1,9 @@
 [
     {
-        "lat": 50.078218,
-        "lng": 8.239761,
-        "info" : "Stadtmitte",
+        "lat": 50.102854,
+        "lng": 8.192368,
+        "info" : "Superfly",
+        "pic": "/images/superfly.jpg",
         "status" : "F",
         "number": 1234,
         "distanz": 109
@@ -10,7 +11,8 @@
      {
         "lat": 50.084339,
         "lng": 8.260689,
-        "info" : "Neroberg",
+        "info" : "Nerobergbahn",
+        "pic": "/images/nero.jpg",
         "status" : "F",
         "number": 1235,
         "distanz": 136
@@ -64,3 +66,4 @@
         "distanz": 150  
     }
 ]
+
